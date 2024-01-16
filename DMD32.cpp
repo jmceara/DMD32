@@ -66,7 +66,7 @@ DMD::DMD(byte panelsWide, byte panelsHigh)
     pinMode(PIN_DMD_SCLK, OUTPUT);	//
     //pinMode(PIN_DMD_R_DATA, OUTPUT);	// this pin is managed by SPI
     pinMode(PIN_DMD_nOE, OUTPUT);	//
-    
+    analogWrite(PIN_DMD_nOE, cr);
 
 
 
@@ -563,6 +563,13 @@ int DMD::charWidth(const unsigned char letter)
     return width;
 }
 
+void DMD::setBrightness(uint16_t b){
+  
+  if(b==1){b=2;} 
+  cr=b;
+  analogWrite(PIN_DMD_nOE, cr);
+  
+}
 
 
 

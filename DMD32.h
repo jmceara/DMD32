@@ -164,6 +164,7 @@ class DMD
   //Insert the calls to this function into the main loop for the highest call rate, or from a timer interrupt
   void scanDisplayBySPI();
 
+  void setBrightness(uint16_t crh);
 
   private:
     void drawCircleSub( int cx, int cy, int x, int y, byte bGraphicsMode );
@@ -193,10 +194,11 @@ class DMD
     volatile byte bDMDByte;
     
     //uninitalised pointer to SPI object
-	SPIClass * vspi = NULL;
-	static const int spiClk = 4000000; // 4 MHz SPI clock
+    SPIClass * vspi = NULL;
+    static const int spiClk = 4000000; // 4 MHz SPI clock
 	
-
+    // Bright
+    uint16_t cr = 255;
 	
 
 };
